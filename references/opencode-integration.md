@@ -10,29 +10,25 @@ If this repository is cloned directly into one of those paths, OpenCode can disc
 
 ## Minimal custom command example
 
-Create `.opencode/commands/api-validate.md`:
+This repository already includes a ready-to-copy command file at:
 
-```md
----
-description: Validate Java APIs with curl and write a Markdown report
-agent: build
----
+- `assets/opencode/commands/api-validate.md`
 
-Load the `java-api-validation` skill and validate the API described by $ARGUMENTS.
+Copy it to:
 
-Required workflow:
-1. use a subagent first to locate and normalize the contract source
-2. create a JSON case suite
-3. run the bundled curl validation script
-4. write a Markdown report under docs/api-validation/
-5. summarize pass/fail/blocked findings
-```
+- `.opencode/commands/api-validate.md`
 
 Then run:
 
 ```text
 /api-validate user endpoints
 ```
+
+The bundled command is configured to:
+- use `api-validator`
+- run as a subtask
+- load the `java-api-validation` skill
+- produce a Markdown verification report
 
 ## Optional validation-focused subagent example
 

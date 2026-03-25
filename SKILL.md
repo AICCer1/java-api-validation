@@ -151,6 +151,10 @@ Read this when wiring the skill into OpenCode commands or validation-stage agent
 
 Copy this file into `.opencode/agents/api-validator.md` when you want a ready-made validation subagent that can be invoked with `@api-validator`.
 
+### `assets/opencode/commands/api-validate.md`
+
+Copy this file into `.opencode/commands/api-validate.md` when you want a slash command that triggers API validation through the `api-validator` subagent.
+
 ## Recommended working pattern in OpenCode
 
 When the request is “validate the API we designed/implemented”, use this sequence:
