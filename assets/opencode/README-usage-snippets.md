@@ -23,3 +23,16 @@ cp /path/to/java-api-validation/assets/opencode/commands/api-validate.md .openco
 ```text
 /api-validate user and auth endpoints against the dev server
 ```
+
+## Starter files to copy
+
+```bash
+mkdir -p tmp/api-validation
+cp /path/to/java-api-validation/assets/examples/user-api-cases.json tmp/api-validation/cases.json
+```
+
+Then edit:
+- `base_url`
+- auth token header
+- endpoint paths
+- seeded IDs / request bodies

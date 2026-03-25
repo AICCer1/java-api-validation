@@ -155,6 +155,14 @@ Copy this file into `.opencode/agents/api-validator.md` when you want a ready-ma
 
 Copy this file into `.opencode/commands/api-validate.md` when you want a slash command that triggers API validation through the `api-validator` subagent.
 
+### `assets/examples/user-api-cases.json`
+
+Use this as a starter case suite for a typical Spring Boot user API. Copy it and replace base URL, auth, paths, and seeded IDs.
+
+### `assets/examples/user-api-validation-report.md`
+
+Use this as a reference for what a finished Markdown validation report should look like.
+
 ## Recommended working pattern in OpenCode
 
 When the request is “validate the API we designed/implemented”, use this sequence:
