@@ -147,6 +147,10 @@ Read this when delegating the contract-extraction step to `@explore` or `@genera
 
 Read this when wiring the skill into OpenCode commands or validation-stage agents.
 
+### `assets/opencode/agents/api-validator.md`
+
+Copy this file into `.opencode/agents/api-validator.md` when you want a ready-made validation subagent that can be invoked with `@api-validator`.
+
 ## Recommended working pattern in OpenCode
 
 When the request is “validate the API we designed/implemented”, use this sequence:

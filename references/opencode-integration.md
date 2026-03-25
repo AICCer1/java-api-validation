@@ -36,30 +36,26 @@ Then run:
 
 ## Optional validation-focused subagent example
 
-Create `.opencode/agents/api-validator.md`:
+This repository already includes a ready-to-copy OpenCode subagent file at:
 
-```md
----
-description: Validates Java HTTP APIs against design docs and running services
-mode: subagent
-model: anthropic/claude-sonnet-4-5
-permission:
-  bash:
-    "*": ask
-    "curl *": allow
-  edit: allow
-  read: allow
-  write: allow
-  grep: allow
-  glob: allow
-  list: allow
-  skill:
-    "java-api-validation": allow
----
+- `assets/opencode/agents/api-validator.md`
 
-Always load `java-api-validation` before starting validation work.
-Prefer building a concrete curl case suite and a Markdown report instead of ad-hoc prose.
+Copy it to:
+
+- `.opencode/agents/api-validator.md`
+
+Then invoke it in OpenCode with:
+
+```text
+@api-validator validate the user and auth endpoints against the current dev server
 ```
+
+The bundled subagent is designed to:
+- load `java-api-validation` first
+- discover the best contract source
+- build a curl case suite
+- run `scripts/run_curl_suite.py`
+- leave behind a Markdown report
 
 ## Practical use pattern
 
