@@ -2,6 +2,7 @@
 import argparse
 import json
 import os
+import re
 import shlex
 import subprocess
 import sys
@@ -12,9 +13,27 @@ from typing import Any, Dict, List
 from urllib.parse import urlencode
 
 
+ENV_PATTERN = re.compile(r"\$\{([A-Za-z_][A-Za-z0-9_]*)(:-([^}]*))?\}")
+
+
+def _expand_env_string(text: str) -> str:
+    def repl(match: re.Match[str]) -> str:
+        key = match.group(1)
+        default = match.group(3)
+        value = os.getenv(key)
+        if value is not None and value != "":
+            return value
+        if default is not None:
+            return default
+        return match.group(0)
+
+    text = ENV_PATTERN.sub(repl, text)
+    return os.path.expandvars(text)
+
+
 def expand_env(value: Any) -> Any:
     if isinstance(value, str):
-        return os.path.expandvars(value)
+        return _expand_env_string(value)
     if isinstance(value, list):
         return [expand_env(v) for v in value]
     if isinstance(value, dict):

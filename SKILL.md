@@ -131,6 +131,10 @@ Run a JSON case suite through real `curl` commands and emit a Markdown report.
 
 Use this script for deterministic execution instead of hand-writing one-off curl commands when there are multiple endpoints to validate.
 
+### `scripts/mock_api_server.py`
+
+Run this only for self-testing or demoing the skill when you do not have a real Java service available. It provides a minimal local HTTP API compatible with the bundled mock case suite.
+
 ### `references/case-schema.md`
 
 Read this before creating the suite JSON file.

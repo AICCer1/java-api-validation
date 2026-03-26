@@ -1,0 +1,55 @@
+{
+  "suite_name": "mock-user-api-demo",
+  "base_url": "${API_BASE_URL:-http://127.0.0.1:18080}",
+  "default_headers": {
+    "Accept": "application/json",
+    "Authorization": "Bearer ${API_TOKEN:-demo-token}"
+  },
+  "cases": [
+    {
+      "name": "health-check",
+      "method": "GET",
+      "path": "/actuator/health",
+      "expected_status": [200]
+    },
+    {
+      "name": "list-users",
+      "method": "GET",
+      "path": "/api/users",
+      "query": {
+        "page": "1",
+        "size": "10"
+      },
+      "expected_status": [200]
+    },
+    {
+      "name": "get-user-by-id",
+      "method": "GET",
+      "path": "/api/users/1",
+      "expected_status": [200]
+    },
+    {
+      "name": "create-user",
+      "method": "POST",
+      "path": "/api/users",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "name": "Bob Mock",
+        "email": "bob.mock@example.com",
+        "phone": "+8613900000000"
+      },
+      "expected_status": [201]
+    },
+    {
+      "name": "forbidden-without-token",
+      "method": "GET",
+      "path": "/api/admin/users",
+      "headers": {
+        "Authorization": ""
+      },
+      "expected_status": [401, 403]
+    }
+  ]
+}

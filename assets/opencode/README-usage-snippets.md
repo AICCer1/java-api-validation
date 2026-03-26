@@ -36,3 +36,24 @@ Then edit:
 - auth token header
 - endpoint paths
 - seeded IDs / request bodies
+
+## Self-test this skill repo with the mock API
+
+In one shell:
+
+```bash
+python3 .opencode/skills/java-api-validation/scripts/mock_api_server.py
+```
+
+In another shell:
+
+```bash
+mkdir -p tmp/api-validation
+python3 .opencode/skills/java-api-validation/scripts/run_curl_suite.py \
+  --cases .opencode/skills/java-api-validation/assets/examples/mock-user-api-cases.json \
+  --report tmp/api-validation/mock-report.md
+```
+
+The mock server defaults to:
+- base URL: `http://127.0.0.1:18080`
+- token: `demo-token`
